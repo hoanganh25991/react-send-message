@@ -7,7 +7,7 @@ export default class SendMessage extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div style={s.rootDiv}>
         <h1>Send Message</h1>
       </div>
     )

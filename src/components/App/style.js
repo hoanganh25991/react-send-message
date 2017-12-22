@@ -8,17 +8,19 @@ export const style = {
     padding: _20px
   },
   sendMsgDiv: {
-    width: "75vw",
+    width: 250,
     minWidth: 320,
   },
   title: {
     fontSize: "1.6em",
     fontWeight: "bold",
     textAlign: "center"
-    // padding: _20px,
   },
   sendMsgDivHasData: {
     display: "flex",
+    width: "75vw",
+    height: "80vh",
+    overflowY: "auto",
     flexDirection: "column",
     justifyContent: "space-between"
   }
