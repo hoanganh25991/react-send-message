@@ -4,8 +4,7 @@ import "./loginBtn.css"
 
 const _ = console.log
 
-export const STORAGE_PAGE_TOKENS_KEY = "pageAccessTokens"
-export const TOKEN_SCOPE = "email,manage_pages,read_insights"
+export const TOKEN_SCOPE = "email,manage_pages,read_insights,pages_messaging,read_page_mailboxes"
 
 export default class LoginPage extends PureComponent {
   state = {
