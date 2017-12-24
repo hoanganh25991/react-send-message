@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from "react"
 import { style as s } from "./style"
-import "./loginBtn.css"
 
 const _ = console.log
 

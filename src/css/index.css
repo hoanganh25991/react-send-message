@@ -20,5 +20,6 @@ body {
 
 div {
     box-sizing: border-box;
-    font-family: Helvetica, Arial, sans-serif
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 150%;
 }
