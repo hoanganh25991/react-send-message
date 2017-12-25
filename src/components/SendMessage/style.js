@@ -20,7 +20,7 @@ export const style = {
   postContainerDiv: {
     display: "flex",
     flexWrap: "wrap",
-    marginBottom: _10px,
+    marginBottom: _5px,
   },
   textAreaPost: {
     flex: 1,
@@ -37,9 +37,18 @@ export const style = {
     padding: _5px,
     boxSizing: "border-box",
     marginRight: _5px,
+    minWidth: 200,
+  },
+  imgContainerDiv:{
+    width: 200,
+    display: "block",
+  },
+  inputImg: {
+    width: "100%",
+    marginBottom: _5px,
   },
   postDivBtn: {
-    // padding: `${_5px} ${_7px}`
+    textAlign: "center"
   },
   msgContainerDiv: {
     display: "flex",

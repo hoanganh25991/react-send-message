@@ -136,30 +136,51 @@ export default class SendMessage extends PureComponent {
     const {customers, isSending, msg, isPosting, postMsg} = this.state
     const sendBtnTxt = isSending ? "Sending..." : "Send"
     const postBtnTxt = isPosting ? "Publishing..." :"Publish"
+    const hasCustomer = customers && customers.length > 0
 
     return (
       <div style={s.rootDiv}>
         <div style={s.pageName}>{name}</div>
         <div style={s.postContainerDiv}>
-          <textarea style={s.textAreaPost} placeholder={"Your Post Message"} onChange={this.storePostMsg} value={postMsg}/>
-          <div className={"postBtn"} style={s.postDivBtn} onClick={this.publishPostX}>{postBtnTxt}</div>
+          <textarea
+            style={s.textAreaPost}
+            placeholder={"Your Post Message"}
+            onChange={this.storePostMsg}
+            value={postMsg}/>
+          <div style={s.imgContainerDiv}>
+            <input name={"postPhoto"} type={"file"} style={s.inputImg}/>
+            <div className={"postBtn"}
+                 style={s.postDivBtn}
+                 onClick={this.publishPostX}>
+              {postBtnTxt}
+            </div>
+          </div>
         </div>
         <div>{pageId}</div>
         <div>{pageToken}</div>
-        <div style={s.msgContainerDiv}>
+        {hasCustomer && <div style={s.msgContainerDiv}>
           <div style={s.msgDiv}>
-            {customers && customers.map(userInfo =>
-              <CustomerInfo key={userInfo.id}
+            {customers.map(userInfo =>
+              <CustomerInfo
+                key={userInfo.id}
                 userInfo={userInfo}
                 selectUser={this.toggleAddToSendList}
                 selected={this.isSelected(userInfo.id)}/>)}
           </div>
           <div style={s.sendCmdContainerDiv}>
-            <textarea style={s.textArea} placeholder={"Your message"} onChange={this.storeMsg} value={msg}/>
-            <div className={"fb-message-blue"} style={s.sendDivBtn} onClick={this.broadcastMsg}><i/> {sendBtnTxt}</div>
+            <textarea
+              style={s.textArea}
+              placeholder={"Your message"}
+              onChange={this.storeMsg}
+              value={msg}/>
+            <div
+              className={"fb-message-blue"}
+              style={s.sendDivBtn}
+              onClick={this.broadcastMsg}>
+              <i/> {sendBtnTxt}
+            </div>
           </div>
-        </div>
-
+        </div>}
       </div>
     )
   }

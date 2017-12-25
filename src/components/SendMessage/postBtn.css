@@ -1,28 +1,17 @@
 div.postBtn {
-    bottom: 0;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Helvetica, Arial, sans-serif;
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     cursor: pointer;
-    height: 22px;
-    left: 0;
-    position: relative;
-    right: 0;
-    text-decoration: none solid rgb(255, 255, 255);
-    top: 0;
-    vertical-align: middle;
+    height: 33px;
+    line-height: 33px;
     white-space: nowrap;
-    z-index: 2;
-    column-rule-color: rgb(255, 255, 255);
-    justify-content: center;
-    perspective-origin: 38px 12px;
-    transform-origin: 38px 12px;
-    background: rgb(66, 103, 178) none repeat scroll 0% 0% / auto padding-box border-box;
+    background: rgb(66, 103, 178) none repeat;
     border: 1px solid rgb(66, 103, 178);
-    border-radius: 2px 0 0 2px;
-    font: normal normal 700 normal 12px / 22px Helvetica, Arial, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-    padding: 0 16px;
-    transition: background-color 0.2s cubic-bezier(0.08, 0.52, 0.52, 1) 0s, box-shadow 0.2s cubic-bezier(0.08, 0.52, 0.52, 1) 0s, transform 0.2s cubic-bezier(0.08, 0.52, 0.52, 1) 0s;
+    border-radius: 3px;
+    padding: 0 7px;
 }
 
 
