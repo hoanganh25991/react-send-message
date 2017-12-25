@@ -20,6 +20,7 @@ export default class SendMessage extends PureComponent {
     msg: "",
     customers: [],
     selectedCustomers: [],
+    isSending: false,
   }
 
   componentDidMount(){
@@ -69,8 +70,17 @@ export default class SendMessage extends PureComponent {
 
   broadcastMsg = () => {
     _("[broadcastMsg] Sending")
+    this.setState({isSending: true})
     const {selectedCustomers, msg: text} = this.state
     const {page: {id: pageId, access_token: pageToken} = {}} = this.props
+    const noCustomerSelected = selectedCustomers.length === 0
+
+    if(noCustomerSelected) {
+      window.confirm("Please pick at least one customer.")
+      this.setState({isSending: false})
+      return
+    }
+
     const waitSendList = selectedCustomers.map(recipientId => {
       return sendMsg({pageId, pageToken})({text, recipientId}).catch(err => {
         _("[sendMsg][ERR]Fail at recipientId:",recipientId)
@@ -78,12 +88,21 @@ export default class SendMessage extends PureComponent {
       })
     })
 
-    Promise.all(waitSendList).then(() => _("[broadcastMsg] Finished")).catch(err => _("[broadcastMsg][ERR]", err))
+    Promise.all(waitSendList)
+      .catch(err => _("[broadcastMsg][ERR]", err))
+      .then(() => {
+        _("[broadcastMsg] Finished")
+        this.setState({
+          isSending: false, // Reset send status
+          msg: "", // Reset msg fill
+        })
+      })
   }
 
   render() {
     const {page: {id: pageId, access_token: pageToken, name} = {}} = this.props
-    const {customers} = this.state
+    const {customers, isSending, msg} = this.state
+    const sendBtnTxt = isSending ? "Sending..." : "Send"
 
     return (
       <div style={s.rootDiv}>
@@ -99,8 +118,8 @@ export default class SendMessage extends PureComponent {
                 selected={this.isSelected(userInfo.id)}/>)}
           </div>
           <div style={s.sendCmdContainerDiv}>
-            <textarea style={s.textArea} placeholder={"Your message"} onChange={this.storeMsg}/>
-            <div className={"fb-message-blue"} style={s.sendDivBtn} onClick={this.broadcastMsg}><i/> Send</div>
+            <textarea style={s.textArea} placeholder={"Your message"} onChange={this.storeMsg} value={msg}/>
+            <div className={"fb-message-blue"} style={s.sendDivBtn} onClick={this.broadcastMsg}><i/> {sendBtnTxt}</div>
           </div>
         </div>
 

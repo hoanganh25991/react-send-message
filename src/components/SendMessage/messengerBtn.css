@@ -5,8 +5,6 @@ div.fb-message-blue {
     color: #fff;
     background-color: #0084ff;
     border: 1px solid #0084ff;
-    max-width: 95px;
-    min-width: 78px;
     height: 35px;
     line-height: 35px;
     border-radius: 3px;
@@ -15,6 +13,7 @@ div.fb-message-blue {
     -o-transition: all ease .15s;
     -moz-transition: all ease .15s;
     transition: all ease .15s;
+    padding-right: 7px;
 }
 div.fb-message-blue:hover {
     background-color: #2093ff;

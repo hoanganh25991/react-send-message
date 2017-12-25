@@ -16,16 +16,22 @@ export const style = {
   msgContainerDiv: {
     display: "flex",
     maxHeight: "25vh",
+    minHeight: 100,
+    flexWrap: "wrap",
+    overflowY: "auto",
+    overflowX: "hidden",
   },
   msgDiv: {
     display: "block",
     flex: 1,
     marginRight: _10px,
+    minWidth: 200,
   },
   sendCmdContainerDiv:{
     display: "block",
     maxWidth: 320,
     width: "25%",
+    minWidth: 150,
   },
   textArea: {
     width: "100%",
@@ -43,5 +49,6 @@ export const style = {
   },
   sendDivBtn: {
     cursor: "pointer",
+    display: "inline-block"
   }
 }
