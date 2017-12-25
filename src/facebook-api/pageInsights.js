@@ -14,15 +14,15 @@ const axios = OAxois.create({
   }
 })
 
-const metricReactions = [
-  "page_actions_post_reactions_like_total",
-  "page_actions_post_reactions_love_total",
-  "page_actions_post_reactions_wow_total",
-  "page_actions_post_reactions_haha_total",
-  "page_actions_post_reactions_sorry_total",
-  "page_actions_post_reactions_anger_total",
-  "page_actions_post_reactions_total"
-]
+// const metricReactions = [
+//   "page_actions_post_reactions_like_total",
+//   "page_actions_post_reactions_love_total",
+//   "page_actions_post_reactions_wow_total",
+//   "page_actions_post_reactions_haha_total",
+//   "page_actions_post_reactions_sorry_total",
+//   "page_actions_post_reactions_anger_total",
+//   "page_actions_post_reactions_total"
+// ]
 
 const GET_PAGE_ACCESS_TOKENS_ERR = "[ERR] Cant exchange User Access Token to Page Access Token"
 const FETCH_GRAPH_API_ERR = "[ERR] Fetch facebook graph api"

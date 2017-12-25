@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from "react"
+import React, { PureComponent } from "react"
 import { style as s } from "./style"
 import * as firebase from "firebase"
 import CustomerInfo from "../CustomerInfo"
@@ -109,7 +109,7 @@ export default class SendMessage extends PureComponent {
   }
 
   render() {
-    const {page: {id: pageId, access_token: pageToken, name} = {}} = this.props
+    const {page: {name} = {}} = this.props
     const {customers, isSending, msg} = this.state
     const sendBtnTxt = isSending ? "Sending..." : "Send"
 

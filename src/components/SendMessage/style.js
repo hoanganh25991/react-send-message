@@ -43,7 +43,7 @@ export const style = {
     wrap: "off",
     resize: "none",
     borderColor: "#E0E0E0",
-    color: "#E0E0E0",
+    // color: "#E0E0E0",
     borderRadius: _5px,
     fontFamily: "Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif",
     linHeight: 1.28,

@@ -1,6 +1,6 @@
 const _5px = 5
-const _10px = 10
-const _20px = 20
+// const _10px = 10
+// const _20px = 20
 export const style = {
   rootDiv:{
     display: "flex",
