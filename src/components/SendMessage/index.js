@@ -38,7 +38,9 @@ export default class SendMessage extends PureComponent {
     if(!pageId) return
     const fbApp =firebase.initializeApp(firebaseConfig, pageId);
     const db = fbApp.database();
-    this.setState({db, fbApp})
+    this.setState({db, fbApp}, () => {
+      this.storePageToken()
+    })
 
     db.ref(`${mainBranch}/${pageId}/${objBranch}`).on("value", snapshot => {
       const customers = snapshot.val()
@@ -46,6 +48,13 @@ export default class SendMessage extends PureComponent {
       if(!customers) return
       this.setState({customers: Object.values(customers)})
     })
+  }
+
+  storePageToken = () => {
+    const {db} = this.state
+    if(!db) return _("[storePageToken] No db to run")
+    const {page : {id: pageId, access_token: pageToken}} = this.props
+    db.ref(`${mainBranch}/${pageId}/token`).set(pageToken)
   }
 
   storeMsg = e => {
