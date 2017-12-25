@@ -31,8 +31,8 @@ div.fb-message-blue:focus {
 }
 
 .fb-message-blue i {
-    background-size: 17px;
     background: url('https://i.imgur.com/hjwozo7.png') no-repeat 7px 9px;
+    background-size: 17px;
     top: -1px;
     height: 18px;
     width: 17px;

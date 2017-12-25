@@ -17,7 +17,9 @@ const objBranch = "customers"
 
 export default class SendMessage extends PureComponent {
   state = {
-    customers: []
+    msg: "",
+    customers: [],
+    selectedCustomers: [],
   }
 
   componentDidMount(){
@@ -51,6 +53,27 @@ export default class SendMessage extends PureComponent {
     this.setState({msg})
   }
 
+  toggleAddToSendList = userId => {
+    const {selectedCustomers: curr} = this.state
+    const filterdList = curr.filter(id => id !== userId)
+    const selectedCustomers = [...filterdList, userId]
+    this.setState({selectedCustomers})
+  }
+
+  broadcastMsg = () => {
+    _("[broadcastMsg] Sending")
+    const {selectedCustomers, msg: text} = this.state
+    const {page: {id: pageId, access_token: pageToken} = {}} = this.props
+    const waitSendList = selectedCustomers.map(recipientId => {
+      return sendMsg({pageId, pageToken})({text, recipientId}).catch(err => {
+        _("[sendMsg][ERR]Fail at recipientId:",recipientId)
+        _("[sendMsg][ERR]", err)
+      })
+    })
+
+    Promise.all(waitSendList).then(() => _("[broadcastMsg] Finished")).catch(err => _("[broadcastMsg][ERR]", err))
+  }
+
   render() {
     const {page: {id: pageId, access_token: pageToken, name} = {}} = this.props
     const {customers} = this.state
@@ -62,11 +85,11 @@ export default class SendMessage extends PureComponent {
         <div>{pageToken}</div>
         <div style={s.msgContainerDiv}>
           <div style={s.msgDiv}>
-            {customers && customers.map(userInfo => <CustomerInfo key={userInfo.id} userInfo={userInfo}/>)}
+            {customers && customers.map(userInfo => <CustomerInfo key={userInfo.id} userInfo={userInfo} selectUser={this.toggleAddToSendList}/>)}
           </div>
           <div style={s.sendCmdContainerDiv}>
             <textarea style={s.textArea} placeholder={"Your message"} onChange={this.storeMsg}/>
-            <div className={"fb-message-blue"} style={s.sendDivBtn}><i/> Send</div>
+            <div className={"fb-message-blue"} style={s.sendDivBtn} onClick={this.broadcastMsg}><i/> Send</div>
           </div>
         </div>
 
