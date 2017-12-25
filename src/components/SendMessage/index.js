@@ -24,6 +24,8 @@ export default class SendMessage extends PureComponent {
     isSending: false,
     postMsg: "",
     isPosting: false,
+    postUrl: "",
+    postImgFile: null,
   }
 
   componentDidMount(){
@@ -117,12 +119,28 @@ export default class SendMessage extends PureComponent {
     this.setState({postMsg})
   }
 
+  storePostUrl = e => {
+    const postUrl = e.target.value
+    _("[postUrl]", postUrl)
+    this.setState({postUrl})
+  }
+
+  storePostImgFile = e => {
+    const postImgFile = e.target.value
+    _("[postImgFile]", postImgFile)
+    this.setState({postImgFile})
+  }
+
   publishPostX = async () => {
     _("[publishPostX] Publishing...")
     this.setState({isPosting: true})
-    const {postMsg} = this.state
+    const {postMsg, postUrl: url} = this.state
     const {page: {id: pageId, access_token: pageToken} = {}} = this.props
-    await publishPost({pageId, pageToken})({text: postMsg})
+
+    const imgId = `imgPage${pageId}`
+    const imgFile = window[imgId].files[0]
+
+    await publishPost({pageId, pageToken})({text: postMsg, url, imgFile})
     _("[publishPostX] Finished")
     this.setState({
       isPosting: false, // Reset send status
@@ -148,11 +166,16 @@ export default class SendMessage extends PureComponent {
             onChange={this.storePostMsg}
             value={postMsg}/>
           <div style={s.imgContainerDiv}>
-            <input type={"file"} style={s.inputImg} id={`imgPage${pageId}`}/>
+            <input
+              type={"file"}
+              style={s.inputImg}
+              id={`imgPage${pageId}`}
+              onChange={this.storePostImgFile}
+            />
             <input
               type={"text"}
               style={s.inputTxt}
-              id={`txtPage${pageId}`}
+              onChange={this.storePostUrl}
               placeholder={"Paste photo's link"}
             />
             <div className={"postBtn"}

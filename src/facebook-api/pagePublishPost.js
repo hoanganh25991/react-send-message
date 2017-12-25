@@ -15,6 +15,7 @@ const axios = OAxois.create({
 })
 
 export const publishPost = ({pageId, pageToken}) => async ({text: message, url, imgFile}) => {
+  _("[publishPost][message, url, imgFile]", message, url, imgFile)
   const postAsPhoto = url ||  imgFile
 
   if(postAsPhoto){
@@ -36,6 +37,7 @@ export const createFormData = ({imgFile, message}) => {
 }
 
 export const publishPhotoAsPost = ({pageId, pageToken}) => async ({text: message, url, imgFile}) => {
+  _("[publishPhotoAsPost]")
   const conflict = url && imgFile
 
   if(conflict) {
