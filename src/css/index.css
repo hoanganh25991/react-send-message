@@ -20,6 +20,7 @@ body {
 
 div {
     box-sizing: border-box;
-    font-family: Helvetica, Arial, sans-serif;
-    line-height: 150%;
+    font-family: Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
+    line-height: 1.28;
+    -webkit-font-smoothing: antialiased;
 }
