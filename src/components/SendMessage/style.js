@@ -1,5 +1,7 @@
 import "./messengerBtn.css"
+import "./postBtn.css"
 const _5px = 5
+const _7px = 7
 const _10px = 10
 const _15px = 15
 
@@ -14,6 +16,30 @@ export const style = {
   pageName:{
     fontSize: 16,
     fontWeight: "bold",
+  },
+  postContainerDiv: {
+    display: "flex",
+    flexWrap: "wrap",
+    marginBottom: _10px,
+  },
+  textAreaPost: {
+    flex: 1,
+    outline: "none",
+    cols: 30,
+    rows: 2,
+    wrap: "off",
+    resize: "none",
+    borderColor: "#E0E0E0",
+    borderRadius: _5px,
+    fontFamily: "Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif",
+    linHeight: 1.28,
+    WebkitFontSmoothing: "antialiased",
+    padding: _5px,
+    boxSizing: "border-box",
+    marginRight: _5px,
+  },
+  postDivBtn: {
+    // padding: `${_5px} ${_7px}`
   },
   msgContainerDiv: {
     display: "flex",
@@ -43,7 +69,6 @@ export const style = {
     wrap: "off",
     resize: "none",
     borderColor: "#E0E0E0",
-    // color: "#E0E0E0",
     borderRadius: _5px,
     fontFamily: "Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif",
     linHeight: 1.28,

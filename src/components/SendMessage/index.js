@@ -21,6 +21,8 @@ export default class SendMessage extends PureComponent {
     customers: [],
     selectedCustomers: [],
     isSending: false,
+    postMsg: "",
+    isPosting: false,
   }
 
   componentDidMount(){
@@ -78,7 +80,7 @@ export default class SendMessage extends PureComponent {
   }
 
   broadcastMsg = () => {
-    _("[broadcastMsg] Sending")
+    _("[broadcastMsg] Sending...")
     this.setState({isSending: true})
     const {selectedCustomers, msg: text} = this.state
     const {page: {id: pageId, access_token: pageToken} = {}} = this.props
@@ -108,14 +110,31 @@ export default class SendMessage extends PureComponent {
       })
   }
 
+  storePostMsg = e => {
+    const postMsg = e.target.value
+    _("[postMsg]", postMsg)
+    this.setState({postMsg})
+  }
+
+  publishPost = () => {
+    _("[publishPost] Publishing...")
+    this.setState({isPosting: true})
+
+  }
+
   render() {
     const {page: {name} = {}} = this.props
-    const {customers, isSending, msg} = this.state
+    const {customers, isSending, msg, isPosting, postMsg} = this.state
     const sendBtnTxt = isSending ? "Sending..." : "Send"
+    const postBtnTxt = isPosting ? "Publishing..." :"Publish"
 
     return (
       <div style={s.rootDiv}>
         <div style={s.pageName}>{name}</div>
+        <div style={s.postContainerDiv}>
+          <textarea style={s.textAreaPost} placeholder={"Your Post Message"} onChange={this.storePostMsg} value={postMsg}/>
+          <div className={"postBtn"} style={s.postDivBtn} onClick={this.publishPost}>{postBtnTxt}</div>
+        </div>
         {/*<div>{pageId}</div>*/}
         {/*<div>{pageToken}</div>*/}
         <div style={s.msgContainerDiv}>
