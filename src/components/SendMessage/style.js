@@ -4,14 +4,15 @@ const _5px = 5
 const _7px = 7
 const _10px = 10
 const _15px = 15
+const fontFamily = "Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif"
+const boxShadow = "0 2px 5px 0 rgba(0,0,0,0.2), 0 2px 10px 0 rgba(0,0,0,0.19)"
 
 export const style = {
   rootDiv: {
-    // border: "1px solid black",
+    boxShadow,
     borderRadius: 5,
     padding: _10px,
     marginBottom: _15px,
-    boxShadow: "0 2px 5px 0 rgba(0,0,0,0.2), 0 2px 10px 0 rgba(0,0,0,0.19)",
   },
   pageName:{
     fontSize: 16,
@@ -23,6 +24,7 @@ export const style = {
     marginBottom: _5px,
   },
   textAreaPost: {
+    fontFamily,
     flex: 1,
     outline: "none",
     cols: 30,
@@ -31,7 +33,6 @@ export const style = {
     resize: "none",
     borderColor: "#E0E0E0",
     borderRadius: _5px,
-    fontFamily: "Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif",
     linHeight: 1.28,
     WebkitFontSmoothing: "antialiased",
     padding: _5px,
@@ -45,6 +46,18 @@ export const style = {
   },
   inputImg: {
     width: "100%",
+    marginBottom: _5px,
+  },
+  inputTxt: {
+    fontFamily,
+    width: "100%",
+    outline: "none",
+    borderColor: "#E0E0E0",
+    borderRadius: _5px,
+    linHeight: 1.28,
+    WebkitFontSmoothing: "antialiased",
+    padding: _5px,
+    boxSizing: "border-box",
     marginBottom: _5px,
   },
   postDivBtn: {
@@ -71,6 +84,7 @@ export const style = {
     minWidth: 200,
   },
   textArea: {
+    fontFamily,
     width: "100%",
     outline: "none",
     cols: 30,
@@ -79,7 +93,6 @@ export const style = {
     resize: "none",
     borderColor: "#E0E0E0",
     borderRadius: _5px,
-    fontFamily: "Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif",
     linHeight: 1.28,
     WebkitFontSmoothing: "antialiased",
     padding: _5px,

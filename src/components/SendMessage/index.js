@@ -148,7 +148,13 @@ export default class SendMessage extends PureComponent {
             onChange={this.storePostMsg}
             value={postMsg}/>
           <div style={s.imgContainerDiv}>
-            <input name={"postPhoto"} type={"file"} style={s.inputImg}/>
+            <input type={"file"} style={s.inputImg} id={`imgPage${pageId}`}/>
+            <input
+              type={"text"}
+              style={s.inputTxt}
+              id={`txtPage${pageId}`}
+              placeholder={"Paste photo's link"}
+            />
             <div className={"postBtn"}
                  style={s.postDivBtn}
                  onClick={this.publishPostX}>
@@ -170,7 +176,7 @@ export default class SendMessage extends PureComponent {
           <div style={s.sendCmdContainerDiv}>
             <textarea
               style={s.textArea}
-              placeholder={"Your message"}
+              placeholder={"Your Message"}
               onChange={this.storeMsg}
               value={msg}/>
             <div
