@@ -64,7 +64,7 @@ export default class LoginPage extends PureComponent {
             <div style={s.subTitle}>to preview your pages insights</div>
 
             <div style={s.loginDiv}>
-              <button className="loginBtn loginBtn--facebook" onClick={this.loginFb}>
+              <button className={"loginBtn loginBtn--facebook"} onClick={this.loginFb}>
                 Login with Facebook
               </button>
             </div>

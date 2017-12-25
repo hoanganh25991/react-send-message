@@ -1,5 +1,6 @@
-const _20px = 20
+const _5px = 5
 const _10px = 10
+const _20px = 20
 export const style = {
   rootDiv:{
     display: "flex",
@@ -18,9 +19,9 @@ export const style = {
   infoDiv: {
     display: "flex",
     flexDirection: "column",
-    padding: _10px
+    padding: `${_5px}px 0 0 ${_5px}px`,
   },
   subInfoDiv: {
-    color: "#bbb"
+    color: "#757575"
   }
 }
