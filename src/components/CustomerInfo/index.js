@@ -11,9 +11,10 @@ export default class CustomerInfo extends PureComponent {
   }
 
   render(){
-    const {userInfo: {id, first_name, last_name, profile_pic, gender}} = this.props
+    const {userInfo: {id, first_name, last_name, profile_pic, gender}, selected} = this.props
+    const rootDivS = !selected ? s.rootDiv : {...s.rootDiv, ...s.rootDivSelected}
     return (
-      <div style={s.rootDiv} onClick={this.selectUser(id)}>
+      <div style={rootDivS} onClick={this.selectUser(id)}>
         <div style={s.imgDiv}>
           <img src={profile_pic} style={s.imgS} alt={"avatar"}/>
         </div>

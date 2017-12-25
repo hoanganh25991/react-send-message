@@ -1,3 +1,4 @@
+const _2px = 2
 const _5px = 5
 const _10px = 10
 const _20px = 20
@@ -6,6 +7,12 @@ export const style = {
     display: "flex",
     height: 56,
     overflow: "hidden",
+    padding: _2px,
+    marginBottom: _5px,
+    borderRadius: _5px,
+  },
+  rootDivSelected: {
+    backgroundColor: "#E0E0E0",
   },
   imgDiv: {
     borderRadius: 50,

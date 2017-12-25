@@ -20,6 +20,7 @@ export const style = {
   msgDiv: {
     display: "block",
     flex: 1,
+    marginRight: _10px,
   },
   sendCmdContainerDiv:{
     display: "block",

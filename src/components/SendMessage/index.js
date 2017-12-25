@@ -53,10 +53,17 @@ export default class SendMessage extends PureComponent {
     this.setState({msg})
   }
 
+  isSelected = userId => {
+    const {selectedCustomers} = this.state
+    return Boolean(selectedCustomers.filter(id => id === userId)[0])
+  }
+
   toggleAddToSendList = userId => {
     const {selectedCustomers: curr} = this.state
-    const filterdList = curr.filter(id => id !== userId)
-    const selectedCustomers = [...filterdList, userId]
+    const selected = this.isSelected(userId)
+    const filteredList = curr.filter(id => id !== userId)
+    const selectedCustomers = !selected ? [...curr, userId] : filteredList
+    _("selectedCustomers", selectedCustomers)
     this.setState({selectedCustomers})
   }
 
@@ -85,7 +92,11 @@ export default class SendMessage extends PureComponent {
         <div>{pageToken}</div>
         <div style={s.msgContainerDiv}>
           <div style={s.msgDiv}>
-            {customers && customers.map(userInfo => <CustomerInfo key={userInfo.id} userInfo={userInfo} selectUser={this.toggleAddToSendList}/>)}
+            {customers && customers.map(userInfo =>
+              <CustomerInfo key={userInfo.id}
+                userInfo={userInfo}
+                selectUser={this.toggleAddToSendList}
+                selected={this.isSelected(userInfo.id)}/>)}
           </div>
           <div style={s.sendCmdContainerDiv}>
             <textarea style={s.textArea} placeholder={"Your message"} onChange={this.storeMsg}/>
