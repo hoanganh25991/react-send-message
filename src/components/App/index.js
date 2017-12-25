@@ -26,20 +26,18 @@ export default class App extends PureComponent {
     const sendMsgDiv = hasPages ? { ...s.sendMsgDiv, ...s.sendMsgDivHasData } : s.sendMsgDiv
 
     return (
-      <div style={s.rootDiv}>
-        {hasPages && <div style={s.title}>OWNED PAGES</div>}
-        <div style={sendMsgDiv}>
-          {loginPage && <LoginPage cbToken={this.cbUserAccessToken} />}
-          {!loginPage && !hasPages && "Dont have page to send message."}
-          {hasPages && (
-            <Fragment>
-              {pageAccessTokens.map(page => {
-                const { id: pageId } = page
-                return <SendMessage key={pageId} page={page} />
-              })}
-            </Fragment>
-          )}
-        </div>
+      <div style={sendMsgDiv}>
+        {loginPage && <LoginPage cbToken={this.cbUserAccessToken} />}
+        {!loginPage && !hasPages && "Dont have page to send message."}
+        {hasPages && <div style={s.title}>Your Pages</div>}
+        {hasPages && (
+          <Fragment>
+            {pageAccessTokens.map(page => {
+              const { id: pageId } = page
+              return <SendMessage key={pageId} page={page} />
+            })}
+          </Fragment>
+        )}
       </div>
     )
   }

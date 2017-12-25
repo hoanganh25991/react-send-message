@@ -107,8 +107,8 @@ export default class SendMessage extends PureComponent {
     return (
       <div style={s.rootDiv}>
         <div style={s.pageName}>{name}</div>
-        <div>{pageId}</div>
-        <div>{pageToken}</div>
+        {/*<div>{pageId}</div>*/}
+        {/*<div>{pageToken}</div>*/}
         <div style={s.msgContainerDiv}>
           <div style={s.msgDiv}>
             {customers && customers.map(userInfo =>

@@ -28,6 +28,6 @@ export const style = {
     padding: `${_5px}px 0 0 ${_5px}px`,
   },
   subInfoDiv: {
-    color: "#757575"
+    color: "#9E9E9E"
   }
 }

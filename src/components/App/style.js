@@ -1,13 +1,9 @@
 const _20px = 20
 const _10px = 10
-const curveRadius = 5
+const _5px  = 5
 
 export const style = {
-  rootDiv: {
-    // border: "1px solid black",
-    // borderRadius: curveRadius,
-    // padding: _10px,
-  },
+  rootDiv: {},
   sendMsgDiv: {
     width: 250,
     minWidth: 320,
@@ -20,8 +16,8 @@ export const style = {
   },
   sendMsgDivHasData: {
     display: "flex",
-    width: "75vw",
-    // height: "95vh",
+    width: "100vw",
+    padding: _5px,
     overflowY: "auto",
     flexDirection: "column",
     justifyContent: "space-between",
