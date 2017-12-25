@@ -3,6 +3,7 @@ import { style as s } from "./style"
 import * as firebase from "firebase"
 import CustomerInfo from "../CustomerInfo"
 import {sendMsg} from "../../facebook-api/pageSendMsg";
+import {publishPost} from "../../facebook-api/pagePublishPost";
 
 const _ = console.log
 
@@ -116,14 +117,22 @@ export default class SendMessage extends PureComponent {
     this.setState({postMsg})
   }
 
-  publishPost = () => {
-    _("[publishPost] Publishing...")
+  publishPostX = async () => {
+    _("[publishPostX] Publishing...")
     this.setState({isPosting: true})
-
+    const {postMsg} = this.state
+    const {page: {id: pageId, access_token: pageToken} = {}} = this.props
+    await publishPost({pageId, pageToken})({text: postMsg})
+    _("[publishPostX] Finished")
+    this.setState({
+      isPosting: false, // Reset send status
+      postMsg: "", // Reset msg fill
+    })
   }
 
   render() {
     const {page: {name} = {}} = this.props
+    const {page: {id: pageId, access_token: pageToken} = {}} = this.props
     const {customers, isSending, msg, isPosting, postMsg} = this.state
     const sendBtnTxt = isSending ? "Sending..." : "Send"
     const postBtnTxt = isPosting ? "Publishing..." :"Publish"
@@ -133,10 +142,10 @@ export default class SendMessage extends PureComponent {
         <div style={s.pageName}>{name}</div>
         <div style={s.postContainerDiv}>
           <textarea style={s.textAreaPost} placeholder={"Your Post Message"} onChange={this.storePostMsg} value={postMsg}/>
-          <div className={"postBtn"} style={s.postDivBtn} onClick={this.publishPost}>{postBtnTxt}</div>
+          <div className={"postBtn"} style={s.postDivBtn} onClick={this.publishPostX}>{postBtnTxt}</div>
         </div>
-        {/*<div>{pageId}</div>*/}
-        {/*<div>{pageToken}</div>*/}
+        <div>{pageId}</div>
+        <div>{pageToken}</div>
         <div style={s.msgContainerDiv}>
           <div style={s.msgDiv}>
             {customers && customers.map(userInfo =>

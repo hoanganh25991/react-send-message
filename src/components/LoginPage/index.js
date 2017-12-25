@@ -3,7 +3,7 @@ import { style as s } from "./style"
 
 const _ = console.log
 
-export const TOKEN_SCOPE = "email,manage_pages,read_insights,pages_messaging,read_page_mailboxes"
+export const TOKEN_SCOPE = "email,manage_pages,read_insights,pages_messaging,read_page_mailboxes,publish_actions,publish_pages,manage_pages"
 
 export default class LoginPage extends PureComponent {
   state = {
