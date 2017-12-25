@@ -2,7 +2,6 @@
 .loginBtn {
     box-sizing: border-box;
     position: relative;
-    /* width: 13em;  - apply for fixed size */
     margin: 0.2em;
     padding: 0 15px 0 46px;
     border: none;
@@ -12,6 +11,7 @@
     border-radius: 0.2em;
     font-size: 16px;
     color: #FFF;
+    cursor: pointer;
 }
 .loginBtn:before {
     content: "";
@@ -32,8 +32,7 @@
 
 /* Facebook */
 .loginBtn--facebook {
-    background-color: #4C69BA;
-    background-image: linear-gradient(#4C69BA, #3B55A0);
+    background: #4C69BA linear-gradient(#4C69BA, #3B55A0);
     /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
     text-shadow: 0 -1px 0 #354C8C;
 }
@@ -43,6 +42,5 @@
 }
 .loginBtn--facebook:hover,
 .loginBtn--facebook:focus {
-    background-color: #5B7BD5;
-    background-image: linear-gradient(#5B7BD5, #4864B1);
+    background: #5B7BD5 linear-gradient(#5B7BD5, #4864B1);
 }

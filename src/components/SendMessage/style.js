@@ -40,5 +40,7 @@ export const style = {
     padding: _5px,
     boxSizing: "border-box",
   },
-  sendBtn: {}
+  sendDivBtn: {
+    cursor: "pointer",
+  }
 }

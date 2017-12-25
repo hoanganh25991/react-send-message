@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from "react"
 import { style as s } from "./style"
 import * as firebase from "firebase"
 import CustomerInfo from "../CustomerInfo"
+import {sendMsg} from "../../facebook-api/pageSendMsg";
 
 const _ = console.log
 
@@ -44,6 +45,12 @@ export default class SendMessage extends PureComponent {
     })
   }
 
+  storeMsg = e => {
+    const msg = e.target.value
+    _("[msg]", msg)
+    this.setState({msg})
+  }
+
   render() {
     const {page: {id: pageId, access_token: pageToken, name} = {}} = this.props
     const {customers} = this.state
@@ -58,8 +65,8 @@ export default class SendMessage extends PureComponent {
             {customers && customers.map(userInfo => <CustomerInfo key={userInfo.id} userInfo={userInfo}/>)}
           </div>
           <div style={s.sendCmdContainerDiv}>
-            <textarea style={s.textArea} placeholder={"Your message"} />
-            <div className={"fb-message-blue"} style={s.sendBtn}><i></i> Send</div>
+            <textarea style={s.textArea} placeholder={"Your message"} onChange={this.storeMsg}/>
+            <div className={"fb-message-blue"} style={s.sendDivBtn}><i/> Send</div>
           </div>
         </div>
 
